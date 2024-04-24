@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lifeline/Controller/profile_controller.dart';
 import 'package:lifeline/Controller/theme_controller.dart';
+import 'package:lifeline/Utils/constants.dart';
 import 'package:lifeline/Utils/router.dart';
 import 'package:lifeline/Utils/user_preferences.dart';
 
@@ -74,9 +77,11 @@ class DrawerScreen extends StatelessWidget {
               UserPreferences.setPhoneNumber(0);
               UserPreferences.setIsDark(false);
               UserPreferences.setIsLoggedIn(false);
+              FirebaseAuth.instance.signOut();
               Get.offAllNamed(RouteManager.login);
             },
-          )
+          ),
+        
         ],
       ),
     );

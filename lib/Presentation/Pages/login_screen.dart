@@ -11,6 +11,7 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
           padding: const EdgeInsets.all(30),
           alignment: Alignment.center,
@@ -24,7 +25,10 @@ class SignInScreen extends StatelessWidget {
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               const Text(
                 "Sign In",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black),
               ),
               const SizedBox(
                 height: 6,
@@ -85,8 +89,56 @@ class SignInScreen extends StatelessWidget {
                             style: TextStyle(color: Colors.white),
                           ),
                   )),
+              SizedBox(height: size.height * 0.1),
             ]),
           )),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 50),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Divider(
+                    color: Constants.mutedColor,
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Or SignUp with",
+                  style: TextStyle(color: Colors.black),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                    child: Divider(
+                  color: Constants.mutedColor,
+                ))
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                controller.googleLogin();
+              },
+              child: CircleAvatar(
+                backgroundColor: Constants.lightGrey,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(Constants.google),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

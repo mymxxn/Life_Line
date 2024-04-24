@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:lifeline/Presentation/Pages/Chat%20Screens/chat_list_screen.dart';
 import 'package:lifeline/Presentation/Pages/drawer/profile_screen.dart';
 import 'package:lifeline/Presentation/Pages/home_screen.dart';
 import 'package:lifeline/Presentation/Pages/login_screen.dart';
@@ -9,10 +10,13 @@ class RouteManager {
   static const String login = '/login';
   static const String home = '/home';
   static const String profile = '/profile';
+  static const String chatList = '/chatList';
   List<GetPage> route = [
     GetPage(name: splash, page: () => SplashScreen()),
     GetPage(name: login, page: () => SignInScreen()),
     GetPage(name: home, page: () => HomeScreen()),
     GetPage(name: profile, page: () => ProfileScreen()),
+    GetPage(name: chatList, page: () => ChatListScreen()),
+
   ];
 }

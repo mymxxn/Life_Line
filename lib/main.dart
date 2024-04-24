@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: RouteManager().route,
-      darkTheme: ThemeData.dark(),
-      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(useMaterial3: true),
+      theme: ThemeData.light(useMaterial3: true),
       initialRoute: RouteManager().route[0].name,
     );
   }

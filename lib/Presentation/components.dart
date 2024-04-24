@@ -39,4 +39,62 @@ class Components {
           )
         ],
       );
+  static commonDialog(BuildContext context, String title, Widget content,
+      {List<Widget>? actions, Function()? ontapOfClose}) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          insetPadding: EdgeInsets.all(10),
+          actions: actions != null && actions.isNotEmpty ? actions : null,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+          title: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                          color: Constants.mutedColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: ontapOfClose == null
+                        ? () {
+                            Navigator.pop(context);
+                          }
+                        : ontapOfClose,
+                    child: CircleAvatar(
+                      radius: 12,
+                      backgroundColor: Constants.mutedColor,
+                      child: Icon(
+                        Icons.close,
+                        color: Colors.white,
+                        size: 15,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Divider(
+                color: Constants.lightGrey,
+              ),
+            ],
+          ),
+          content: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              // height: MediaQuery.of(context).size.height,
+              child: content),
+        );
+      },
+    );
+  }
 }
